@@ -9,9 +9,15 @@
     "react": "^0.12.2",
     "watchify": "^2.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "live-server": "^0.7.1",
+    "parallelshell": "^1.1.1"
+  },
   "scripts": {
-    "watch": "watchify -t 6to5ify ./src/app.jsx -o ./dist/bundle.js -v"
+    "watch": "watchify -t 6to5ify ./src/app.jsx -o ./dist/bundle.js -v",
+    "server:simple": "python -m SimpleHTTPServer 3123",
+    "server:reload": "live-server",
+    "start": "parallelshell \"npm run watch\" \"npm run server:reload\""
   },
   "author": "",
   "license": "ISC"
