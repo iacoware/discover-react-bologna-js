@@ -7,11 +7,11 @@
     "react": "^0.12.2"
   },
   "devDependencies": {
-    "watchify": "^2.2.1",
-    "browserify": "^8.0.3",
     "babelify": "^6.1.2",
+    "browserify": "^10.2.1",
     "live-server": "^0.7.1",
-    "parallelshell": "^1.1.1"
+    "parallelshell": "^1.1.1",
+    "watchify": "^3.2.1"
   },
   "scripts": {
     "watch": "watchify -t babelify ./src/app.jsx -o ./dist/bundle.js -v -d",
