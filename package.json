@@ -14,7 +14,7 @@
     "parallelshell": "^1.1.1"
   },
   "scripts": {
-    "watch": "watchify -t babelify ./src/app.jsx -o ./dist/bundle.js -v",
+    "watch": "watchify -t babelify ./src/app.jsx -o ./dist/bundle.js -v -d",
     "server:simple": "python -m SimpleHTTPServer 3123",
     "server:reload": "live-server",
     "start": "parallelshell \"npm run watch\" \"npm run server:reload\""
