@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "6to5ify": "^3.1.0",
-    "browserify": "^8.0.3",
-    "react": "^0.12.2",
-    "watchify": "^2.2.1"
+    "react": "^0.12.2"
   },
   "devDependencies": {
+    "watchify": "^2.2.1",
+    "browserify": "^8.0.3",
+    "babelify": "^6.1.2",
     "live-server": "^0.7.1",
     "parallelshell": "^1.1.1"
   },
   "scripts": {
-    "watch": "watchify -t 6to5ify ./src/app.jsx -o ./dist/bundle.js -v",
+    "watch": "watchify -t babelify ./src/app.jsx -o ./dist/bundle.js -v",
     "server:simple": "python -m SimpleHTTPServer 3123",
     "server:reload": "live-server",
     "start": "parallelshell \"npm run watch\" \"npm run server:reload\""
