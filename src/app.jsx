@@ -64,7 +64,7 @@ var TodoInput = React.createClass({
 		if (e.keyCode !== 13) { return; }
 		if (!this.state.text) { return; }
 
-		this.props.onAddTodo(this.state);
+		this.props.onAddTodo(this.state.text);
 		this.setState({text: ''});
 	},
 
