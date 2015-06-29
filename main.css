@@ -1,10 +1,55 @@
 html {
   font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
 	color: #333;
-	background-color: #eee;
+	background-color: #f5f5f5;
 	margin: 30px auto;
 	width: 80%;
+
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 1.4em;
+	background-color: #eaeaea;
+	color: #4d4d4d;
 }
+
+#example {
+	width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	color: #777;
+	box-shadow: 0px 10px 30px 0px rgba(50, 50, 50, 0.5);
+}
+
+.todo-list { font-size: 24px; }
+.todo-item { margin: 5px 0; }
+
+.todo-item span { vertical-align: middle; }
+.todo-item [type="checkbox"] {
+	height: 24px;
+	font-size: 24px;
+}
+
+h2 {
+	font-size: 50px;
+	text-align: center;
+	color: #BA0024;
+}
+
+.todo-input {
+	display: block;
+	width: 100%;
+	font-size: 24px;
+	padding: 10px;
+}
+
+.todo {}
+
+.done {text-decoration: line-through; color: #bbb;}
