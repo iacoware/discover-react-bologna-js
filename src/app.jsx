@@ -45,7 +45,8 @@ var TodoList = React.createClass({
 		return (
 			<div className="todo-list">
 				{this.props.items.map(item => {
-					return <TodoItem item={item} onToggleDone={this.props.onToggleDone}/>;
+					return <TodoItem key={item.id} item={item}
+									 onToggleDone={this.props.onToggleDone}/>;
 				})}
 			</div>
 		);
