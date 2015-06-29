@@ -1,7 +1,7 @@
 require('babelify/polyfill');
-
 var React = require("react/addons");
 
+/*------------ helpers ------------*/
 var getId = (function() {
 	var id = 0;
 	return function() {
@@ -9,10 +9,17 @@ var getId = (function() {
 	};
 }());
 
+var Footer = React.createClass({
+	render: function() {
+		return <h4 className="footer">{this.props.children}</h4>;
+	}
+});
 
+
+/*-------- App components ---------*/
 var TodoItem = React.createClass({
-	markAsDone: function() {
-		this.props.onDone(this.props.item);
+	toggleDone: function() {
+		this.props.onToggleDone(this.props.item);
 	},
 
 	render: function(){
@@ -21,7 +28,7 @@ var TodoItem = React.createClass({
 		return (
 			<div className="todo-item">
 				<span>
-					<input onChange={this.markAsDone} type="checkbox" checked={this.props.item.done}/>
+					<input onChange={this.toggleDone} type="checkbox" checked={this.props.item.done}/>
 				</span>
 				<span className={classes}>{this.props.item.text}</span>
 			</div>
@@ -30,11 +37,15 @@ var TodoItem = React.createClass({
 });
 
 var TodoList = React.createClass({
+	propTypes: {
+		items: React.PropTypes.array.isRequired
+	},
+
 	render: function() {
 		return (
 			<div className="todo-list">
 				{this.props.items.map(item => {
-					return <TodoItem item={item} onDone={this.props.onDone}/>;
+					return <TodoItem item={item} onToggleDone={this.props.onToggleDone}/>;
 				})}
 			</div>
 		);
@@ -58,14 +69,12 @@ var TodoInput = React.createClass({
 
 	render: function() {
 		return (
-			<input onKeyDown={this.addTodo} className="todo-input" valueLink={this.linkState('text')} />
+			<input
+				onKeyDown={this.addTodo}
+				className="todo-input"
+				valueLink={this.linkState('text')}
+				autoFocus={true} />
 		);
-	}
-});
-
-var Footer = React.createClass({
-	render: function() {
-		return <h4 style={{textAlign: 'right'}}>{this.props.children}</h4>;
 	}
 });
 
@@ -83,12 +92,10 @@ var App = React.createClass({
 		};
 	},
 
-	markAsDone: function(item) {
+	toggleDone: function(item) {
 		var found = this.state.items.find(x => x.id === item.id);
 		found.done = !found.done;
-		this.setState({
-			items: this.state.items
-		});
+		this.setState(this.state.items);
 	},
 
 	addTodo: function(text) {
@@ -101,7 +108,7 @@ var App = React.createClass({
         	<div>
 				<h2>Todos</h2>
         		<TodoInput onAddTodo={this.addTodo}/>
-        		<TodoList items={this.state.items} onDone={this.markAsDone} />
+        		<TodoList items={this.state.items} onToggleDone={this.toggleDone} />
         		<Footer>Discover React @Bologna JS</Footer>
         	</div>
         );

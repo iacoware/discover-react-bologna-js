@@ -30,6 +30,7 @@ body {
 
 .todo-list { font-size: 24px; }
 .todo-item { margin: 5px 0; }
+.todo-item span { transition: all 1s; }
 
 .todo-item span { vertical-align: middle; }
 .todo-item [type="checkbox"] {
@@ -51,5 +52,6 @@ h2 {
 }
 
 .todo {}
-
 .done {text-decoration: line-through; color: #bbb;}
+
+.footer { text-align: right; }
